@@ -229,14 +229,20 @@ server {
 **部署三步：**
 
 1. 在 GitHub 网页建一个空仓库（**不要**勾 "Add a README"）
-2. 本地推送（先开代理）：
+2. 本地推送（**先开代理**）：
    ```powershell
-   git commit -m "feat: 摩托车电商 Demo"
-   git branch -M main
    git remote add origin https://github.com/<你的用户名>/<仓库名>.git
-   git -c http.version=HTTP/1.1 push -u origin main
+   git -c http.version=HTTP/1.1 push -u origin master
    ```
+   > - 本项目本地分支是 **`master`**（Windows 上 `git init` 的默认值），workflow 同时监听了
+   >   `master` 和 `main`，所以用哪个分支名都能触发自动部署。
+   >   想统一改成 `main`：`git branch -M main`，然后推送 main、再把默认分支切过去。
+   > - **`-c http.version=HTTP/1.1` 不能省略**：本机必须走 HTTP/1.1 才能连上 GitHub，
+   >   不加这条 `git push` 会挂到超时且没有任何输出。
+   > - 在 IDE（Android Studio / VS Code）里推代码时没法传这个参数，
+   >   改成全局配置即可：`git config --global http.version HTTP/1.1`
 3. 仓库 → **Settings → Pages → Source 选 `GitHub Actions`**
+   （必须在 push 前设好，否则 workflow 会因为 Pages 未启用而失败）
 
 之后每次 `git push` 都会自动重新构建并更新线上版本。同事/审核方拿到的地址是：
 

@@ -1,9 +1,11 @@
 name: Deploy to GitHub Pages
 
-# 触发条件：推送到 main 分支，或在 Actions 页面手动点运行
+# 触发条件：推送到主分支，或在 Actions 页面手动点运行
+# 注意：本项目在 Windows 上 git init 默认建的是 master 分支，这里两个都监听，
+# 避免分支名不一致导致「推上去了但 workflow 不跑」。
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 # Pages 部署需要的权限
