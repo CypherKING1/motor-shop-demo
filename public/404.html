@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIM Motor</title>
+    <script>
+      /**
+       * GitHub Pages 的 SPA 兜底页。
+       *
+       * GitHub Pages 对不存在的路径直接返回 404，不会像 Nginx 那样把请求交回 index.html，
+       * 所以直接打开 / 刷新 /motor-shop-demo/keranjang 这类深链接会 404。
+       * 这里把原始路径塞进 query 再跳回首页，由 index.html 里的脚本还原成真实路由。
+       *
+       * 只在 GitHub Pages 上会用到这个文件；本地 dev、Vercel、Netlify、Nginx 都用不到。
+       */
+      ;(function () {
+        var segmentCount = 1 // 仓库名占 1 段：/<repo>/<route>
+        var l = window.location
+        var basePrefix = '/' + l.pathname.split('/').slice(1, 1 + segmentCount).join('/') + '/'
+        var rest = l.pathname.split('/').slice(1 + segmentCount).join('/')
+        var search = l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : ''
+        l.replace(
+          l.protocol +
+            '//' +
+            l.host +
+            basePrefix +
+            '?p=' +
+            encodeURIComponent(rest ? '/' + rest : '/') +
+            search +
+            l.hash
+        )
+      })()
+    </script>
+  </head>
+  <body>
+    <p style="font-family: sans-serif; padding: 24px">Mengalihkan…</p>
+  </body>
+</html>

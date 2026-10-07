@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Placeholder gambar motor">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f8fa"/>
+      <stop offset="1" stop-color="#e6e9ee"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+
+  <!-- 装饰网格 -->
+  <g stroke="#cfd5de" stroke-width="1" opacity="0.55">
+    <path d="M0 150 H800 M0 300 H800 M0 450 H800"/>
+    <path d="M200 0 V600 M400 0 V600 M600 0 V600"/>
+  </g>
+
+  <!-- 虚线外框 -->
+  <rect x="24" y="24" width="752" height="552" rx="20" fill="none" stroke="#c3cad5" stroke-width="3" stroke-dasharray="14 12"/>
+
+  <!-- 摩托车线稿 -->
+  <g stroke="#9aa4b2" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 后轮 / 前轮 -->
+    <circle cx="250" cy="392" r="58"/>
+    <circle cx="552" cy="392" r="58"/>
+    <!-- 车架 / 脚踏板 -->
+    <path d="M250 392 L292 306 L404 300"/>
+    <path d="M318 372 H470"/>
+    <!-- 座椅 -->
+    <path d="M288 296 L300 268 H398"/>
+    <!-- 前叉 / 车把 -->
+    <path d="M552 392 L518 250"/>
+    <path d="M486 244 H556"/>
+    <!-- 大灯 / 车头 -->
+    <path d="M486 250 Q470 268 476 292"/>
+    <!-- 后货架 -->
+    <path d="M250 392 L214 336 H282"/>
+  </g>
+
+  <!-- 轮毂小圆 -->
+  <g fill="#c3cad5">
+    <circle cx="250" cy="392" r="12"/>
+    <circle cx="552" cy="392" r="12"/>
+  </g>
+
+  <!-- 高光 -->
+  <rect x="0" y="0" width="800" height="230" fill="url(#shine)"/>
+
+  <!-- 文案 -->
+  <g text-anchor="middle" font-family="Segoe UI, Roboto, Arial, sans-serif">
+    <text x="400" y="516" font-size="27" font-weight="700" fill="#98a2b3" letter-spacing="2">
+      GANTI DENGAN FOTO MOTOR
+    </text>
+    <text x="400" y="546" font-size="16" fill="#b0b8c4" letter-spacing="1">
+      800 × 600 px  ·  JPG / PNG / WEBP
+    </text>
+    <text x="400" y="572" font-size="14" fill="#b0b8c4" letter-spacing="1">
+      public/images/motors/
+    </text>
+  </g>
+</svg>

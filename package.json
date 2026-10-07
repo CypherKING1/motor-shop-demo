@@ -1,0 +1,21 @@
+{
+  "name": "motor-shop-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo e-commerce front-end for electric motorcycle store (Indonesia / IDR). UI mock-up only, no real payment integration.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.2.6",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.5"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#d4212f" />
+    <meta
+      name="description"
+      content="VIM Motor - Demo toko motor listrik & sepeda listrik Indonesia. Halaman demo, tidak ada transaksi nyata."
+    />
+    <title>VIM Motor | Motor Listrik &amp; Sepeda Listrik Indonesia</title>
+
+    <script>
+      /**
+       * 配合 public/404.html：把 404 兜底页传来的 ?p=/xxx 还原成真实路径，
+       * 这样在 GitHub Pages 上直接打开 / 刷新深链接（例如 /keranjang）也不会 404。
+       * 必须在 vue-router 初始化之前执行，所以放在 <head> 里。
+       * 非 GitHub Pages 环境（本地开发等）没有 ?p= 参数，这段不会做任何事。
+       */
+      ;(function () {
+        var l = window.location
+        var mp = l.search.match(/[?&]p=([^&]*)/)
+        if (!mp) return
+        var mq = l.search.match(/[?&]q=([^&]*)/)
+        var path = '/' + decodeURIComponent(mp[1]).replace(/^\/+/, '')
+        var search = mq ? '?' + decodeURIComponent(mq[1]) : ''
+        var root = l.pathname.replace(/\/+$/, '')
+        window.history.replaceState(null, '', root + path + search + l.hash)
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

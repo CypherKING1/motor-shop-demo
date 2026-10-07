@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+# 触发条件：推送到 main 分支，或在 Actions 页面手动点运行
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Pages 部署需要的权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同时只跑一个部署，新的一次会取消还在跑的旧的
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # vite.config.js 会自动识别 GITHUB_ACTIONS / GITHUB_REPOSITORY，
+      # 把 base 设成 /<仓库名>/，不需要在这里额外传参数
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
